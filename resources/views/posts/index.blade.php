@@ -5,19 +5,14 @@
 
 @section('content')
 
-    @forelse ($posts as $key => $post)
-    @each('posts.partials.post',$posts , 'post' )
-        @include('posts.partials.post')
-    @empty
-    No posts found!
-    @endforelse
+    @foreach ($posts as $key => $post)
+    {{-- @each('posts.partials.post',$posts , 'post' ) --}}
+        {{-- @include('posts.partials.post') --}}
+        <div>{{$key}}.{{$post['title']}}</div>
+        <div style="background-color:aqua">{{$key}}.{{$post['title']}}</div>
 
-    <div>
-        @for( $i=0; $i<10; $i++)
-        <div> The current value is {{$i}}</div>
+    @endforeach
 
-        @endfor
-    </div>
 
 
 
