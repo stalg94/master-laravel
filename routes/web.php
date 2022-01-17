@@ -27,6 +27,7 @@ Route::get('/post/{id}', function ($id) {
             'title' => 'Intro to Laravel',
             'content' => 'This is a short intro to Laravel',
             'is_new'=> true,
+            'has_comments' => true,
         ],
         2 => [
             'title' => 'Intro to PHP',
@@ -45,6 +46,34 @@ Route::get('/post/{id}', function ($id) {
 //     'id' => '[0-9]+'
 // ])
 ->name('posts.show');
+
+$posts=[
+    1 =>[
+        'title' => 'Intro to Laravel',
+        'content' => 'This is a short intro to Laravel',
+        'is_new'=> true,
+        'has_comments' => true,
+    ],
+    2 => [
+        'title' => 'Intro to PHP',
+        'content' => 'This is a short intro to PHP',
+        'is_new'=> false,
+    ],
+    3 => [
+        'title' => 'Intro to JS',
+        'content' => 'This is a short intro to JS',
+        'is_new'=> false,
+    ],
+
+];
+
+Route::get('/posts', function() use ($posts){
+    return view('posts.index',
+    //cvompact($posts) == ['posts' => $posts]
+    [
+        'posts' =>$posts,
+    ]);
+});
 
 Route::view('/', 'home.index')->name('home.index');
 Route::view('/contact', 'home.contact')->name('home.contact');
