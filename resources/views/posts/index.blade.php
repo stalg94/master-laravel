@@ -6,12 +6,8 @@
 @section('content')
 
     @forelse ($posts as $key => $post)
-    @if ($loop->even)
-    <div>{{$key}}.{{$post['title']}}</div>
-    @else
-    <div style="background-color:aqua">{{$key}}.{{$post['title']}}</div>
-    @endif
-
+    @each('posts.partials.post',$posts , 'post' )
+        @include('posts.partials.post')
     @empty
     No posts found!
     @endforelse
